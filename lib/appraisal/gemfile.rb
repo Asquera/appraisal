@@ -12,11 +12,11 @@ module Appraisal
     end
 
     def load(path)
-      run(IO.read(path))
+      run(IO.read(path), path)
     end
 
-    def run(definitions)
-      instance_eval(definitions, __FILE__, __LINE__)
+    def run(definitions, path)
+      instance_eval(definitions, path, 0)
     end
 
     def gem(name, *requirements)
